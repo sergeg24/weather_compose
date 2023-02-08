@@ -44,12 +44,12 @@ const val API_KEY = "e06f13b7dd5e4f8ebf081520230801"
 class MainActivity : ComponentActivity() {
 
     private lateinit var pLauncher: ActivityResultLauncher<String>
+    private var openDialog: Boolean = false
     open lateinit var daysList: MutableState<List<WeatherModel>>
     open lateinit var currentDay: MutableState<WeatherModel>
     open lateinit var stateLoading: MutableState<Boolean>
     open lateinit var stateDialog: MutableState<Boolean>
     open lateinit var stateErrors: MutableState<MutableList<String>>
-    private var openDialog: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -72,7 +72,14 @@ class MainActivity : ComponentActivity() {
                     mutableStateOf(listOf())
                 }
                 currentDay = remember {
-                    mutableStateOf(WeatherModel("", "", "0", "0", "", "0", "0", ""))
+                    mutableStateOf(
+                        WeatherModel(
+                            "", "",
+                            "0", "0",
+                            "", "0",
+                            "0", ""
+                        )
+                    )
                 }
                 stateLoading = remember {
                     mutableStateOf(true)
@@ -177,7 +184,8 @@ class MainActivity : ComponentActivity() {
         context: Context = this,
     ) {
         val url =
-            "https://api.weatherapi.com/v1/forecast.json?key=$API_KEY&q=$city&days=3&aqi=no&alerts=no&lang=ru"
+            "https://api.weatherapi.com/v1/forecast.json?key=$API_KEY" +
+                    "&q=$city&days=3&aqi=no&alerts=no&lang=ru"
         val queue = Volley.newRequestQueue(context)
         stateLoading.value = true
         val strRequest = StringRequest(

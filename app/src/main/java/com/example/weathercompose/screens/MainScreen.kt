@@ -88,7 +88,11 @@ fun MainCard(
                         }°С" else "${
                             currentDay.value.maxTemp.toFloat().toInt()
                         }°С/${currentDay.value.minTemp.toFloat().toInt()}°С",
-                        style = TextStyle(fontSize = (if (currentDay.value.currentTemp.isNotEmpty()) 65 else 55).sp),
+                        style = TextStyle(
+                            fontSize = (
+                                    if (currentDay.value.currentTemp.isNotEmpty()) 65 else 55
+                                    ).sp
+                        ),
                         color = Color.White
                     )
                 }
