@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WeatherCompose</string>
+    <string name="dialog_manager_title">Включить местоположение?</string>
+    <string name="dialog_manager_message">Вы хотите включить местоположение?</string>
+    <string name="dialog_manager_ok">OK</string>
+    <string name="dialog_manager_cancel">Cancel</string>
+</resources>
